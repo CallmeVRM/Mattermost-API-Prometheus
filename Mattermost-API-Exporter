@@ -1,0 +1,45 @@
+from prometheus_client import start_http_server, Gauge
+import requests
+import time
+import json
+
+# Liste des endpoints
+endpoints = [
+    "/api/v4/analytics/old?team_id=775s1mmgxtdr98fsfsdcifz31a",
+    "/api/v4/analytics/old"
+]
+
+# Création de la gauge qui renvois les metrics via le serveur http
+gauge = Gauge('mattermost_metrics', 'Description of gauge', labelnames=('metric_name', 'endpoint'))
+
+def get_api_data(endpoint):
+    headers = {
+        "Authorization": "Bearer j94au8chuirhx8gdj71i8fggho",
+        "Content-Type": "application/json"
+    }
+    url = f"http://192.168.100.22{endpoint}"
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Failed to retrieve data: {response.status_code}")
+        return None
+
+def process_data(endpoint, data):
+    for item in data:
+        metric_name = item.get('name')
+        value = item.get('value', 0)
+        gauge.labels(metric_name, endpoint).set(value)
+
+def main():
+    # Démarrer le serveur HTTP pour exposer les métriques à Prometheus
+    start_http_server(8000)
+    while True:
+        for endpoint in endpoints:
+            data = get_api_data(endpoint)
+            if data:
+                process_data(endpoint, data)
+        time.sleep(15)  # Attendre 15 secondes avant de faire les prochains appels API
+
+if __name__ == '__main__':
+    main()
