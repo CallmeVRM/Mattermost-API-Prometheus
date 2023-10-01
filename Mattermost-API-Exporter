@@ -5,7 +5,7 @@ import json
 
 # Liste des endpoints
 endpoints = [
-    "/api/v4/analytics/old?team_id=775s1mmgxtdr98fsfsdcifz31a",
+    "/api/v4/analytics/old?team_id=775s1mmgxtdr98fsfsdcifz31a",        #Changez le team id
     "/api/v4/analytics/old"
 ]
 
@@ -14,7 +14,7 @@ gauge = Gauge('mattermost_metrics', 'Description of gauge', labelnames=('metric_
 
 def get_api_data(endpoint):
     headers = {
-        "Authorization": "Bearer j94au8chuirhx8gdj71i8fggho",
+        "Authorization": "Bearer Token",
         "Content-Type": "application/json"
     }
     url = f"http://192.168.100.22{endpoint}"
