@@ -1,0 +1,3 @@
+  - job_name: 'MatterAPI'
+    static_configs:
+      - targets: ['192.168.100.22:8000']
