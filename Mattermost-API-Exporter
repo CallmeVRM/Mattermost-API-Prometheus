@@ -5,7 +5,7 @@ import json
 
 # Liste des endpoints
 endpoints = [
-    "/api/v4/analytics/old?team_id=775s1mmgxtdr98fsfsdcifz31a",        #Changez le team id
+    "/api/v4/analytics/old?team_id=775s1mmgxtdr98fsfsdcifz31a",        #Changez le team id par le votre
     "/api/v4/analytics/old"
 ]
 
