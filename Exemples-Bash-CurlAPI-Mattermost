@@ -1,5 +1,5 @@
 #Récupération status et santé du mattermost :
-curl -s -X GET -H 'Authorization: Bearer j94au8chuirhx8gdj71i8fggho' http://192.168.100.22/api/v4/system/ping | jq .   
+curl -s -X GET -H 'Authorization: Bearer <Votre_Token_sans<>_ici>' http://192.168.100.22/api/v4/system/ping | jq .   
 
 #Autres endpoint analytics :
 curl -H "Authorization: Bearer your_auth_token_here" -H "Content-Type: application/json" "https://your-mattermost-instance.com/api/v4/analytics/old?name=standard"
@@ -7,4 +7,4 @@ curl -H "Authorization: Bearer your_auth_token_here" -H "Content-Type: applicati
 curl -H "Authorization: Bearer your_auth_token_here" -H "Content-Type: application/json" "https://your-mattermost-instance.com/api/v4/analytics/old?name=user_counts_with_posts_day"
 curl -H "Authorization: Bearer your_auth_token_here" -H "Content-Type: application/json" "https://your-mattermost-instance.com/api/v4/analytics/old?name=extra_counts"
 
-baibao@mattermost:~$ curl -s -X GET -H 'Authorization: Bearer <Votre_Token_sans<>_ici>' 'http://192.168.100.22/api/v4/analytics/old?team_id={775s1mmgxtdr98fsfsdcifz31a}' | jq .
+bb@mattermost:~$ curl -s -X GET -H 'Authorization: Bearer <Votre_Token_sans<>_ici>' 'http://192.168.100.22/api/v4/analytics/old?team_id={775s1mmgxtdr98fsfsdcifz31a}' | jq .
